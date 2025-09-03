@@ -16,8 +16,5 @@ Route::get('/products', function () {
 });
 
 Route::get('/products/{id}', function ($id) {
-  // do something with the id
-  // e.g. fetch a record from the db
-
   return view('products.show', ['id' => $id]);
 });
