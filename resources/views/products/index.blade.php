@@ -1,25 +1,13 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Torik Shop</title>
-</head>
-<body>
-  <h2>Currently Available Products</h2>
-  <p>{{ $greeting }}</p>
+<x-layout>
+  <h2>Currently Available products</h2>
 
   <ul>
-    <li>
-      <a href="/products/{{ $products[0]["id"] }}">
-        {{ $products[0]["name"] }}
-      </a>
-    </li>
-    <li>
-      <a href="/products/{{ $products[1]["id"] }}">
-        {{ $products[1]["name"] }}
-      </a>
-    </li>
+    @foreach($products as $product)
+      <li>
+        <x-card :highlight="$product['price'] > 10" href="/products/{{$product['id']}}">
+          <h3>{{ $product['name'] }}</h3>
+        </x-card>
+      </li>
+    @endforeach
   </ul>
-
-</body>
-</html>
+</x-layout>

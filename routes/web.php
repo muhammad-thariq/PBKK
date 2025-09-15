@@ -15,6 +15,10 @@ Route::get('/products', function () {
   return view('products.index', ["greeting" => "Selamat Datang!", "products" => $products]);
 });
 
+Route::get('/products/create', function () {
+  return view('products.create');
+});
+
 Route::get('/products/{id}', function ($id) {
   return view('products.show', ['id' => $id]);
 });

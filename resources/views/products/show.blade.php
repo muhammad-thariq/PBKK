@@ -1,10 +1,3 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Torik Shop</title>
-</head>
-<body>
-  <h2>Product id - {{ $id }}</h2>
-</body>
-</html>
+<x-layout>
+  <h2>product id - {{ $id }}</h2>
+</x-layout>
