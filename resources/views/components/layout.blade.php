@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Torik Shop</title>
+  <title>Ninja Network</title>
 
   @vite('resources/css/app.css')
 </head>
@@ -11,13 +11,12 @@
 
   <header>
     <nav>
-      <h1>Torik Shop</h1>
-      <a href="/products"> 
-        All products
+      <h1>Ninja Network</h1>
+      <a href="/ninjas"> 
+        All Ninjas
       </a>
-      <br>
-      <a href="/products/create"> 
-        Create New product
+      <a href="/ninjas/create">
+        Create New Ninja
       </a>
     </nav>
   </header>

@@ -6,19 +6,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', function () {
-  $products = [
-    ["name" => "Book","price" => 20, "id" => "1"],
-    ["name" => "Pencil","price" => 5, "id" => "2"],
+Route::get('/ninjas', function () {
+  $ninjas = [
+    ["name" => "mario","skill" => 75, "id" => "1"],
+    ["name" => "luigi","skill" => 45, "id" => "2"],
   ];
 
-  return view('products.index', ["greeting" => "Selamat Datang!", "products" => $products]);
+  return view('ninjas.index', ["greeting" => "Selamat Datang!", "ninjas" => $ninjas]);
 });
 
-Route::get('/products/create', function () {
-  return view('products.create');
+Route::get('/ninjas/create', function () {
+  return view('ninjas.create');
 });
 
-Route::get('/products/{id}', function ($id) {
-  return view('products.show', ['id' => $id]);
+Route::get('/ninjas/{id}', function ($id) {
+  return view('ninjas.show', ['id' => $id]);
 });
