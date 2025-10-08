@@ -6,7 +6,6 @@
     <p><strong>About me:</strong></p>
     <p>{{ $ninja->bio }}</p>
   </div>
-
   {{-- dojo info --}}
   <div class="border-2 border-dashed bg-white px-4 pb-4 my-4 rounded">
     <h3>Dojo Information</h3>
@@ -16,4 +15,11 @@
     <p>{{ $ninja->dojo->description }}</p>
   </div>
 
+  {{-- delete button --}}
+  <form action="{{ route('ninjas.destroy', $ninja->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit" class="btn my-4">Delete Ninja</button>
+  </form>
 </x-layout>

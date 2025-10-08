@@ -10,9 +10,11 @@ class NinjaController extends Controller
       $ninjas = Ninja::with('dojo')->orderBy('created_at', 'desc')->paginate(10);
       return view('ninjas.index', ['ninjas' => $ninjas]);
     }
-    public function show($id) {
+
+    public function show(Ninja $ninja) {
       // route --> /ninjas/{id}
-      $ninja = Ninja::with('dojo')->findOrFail($id);
+      $ninja->load('dojo');
+
       return view('ninjas.show', ['ninja' => $ninja]);
     }
     public function create() {
@@ -20,7 +22,6 @@ class NinjaController extends Controller
       $dojos = Dojo::all();
       return view('ninjas.create', ['dojos' => $dojos]);
     }
-
     public function store(Request $request) {
       // --> /ninjas/ (POST)
       $validated = $request->validate([
@@ -29,15 +30,15 @@ class NinjaController extends Controller
         'bio' => 'required|string|min:20|max:1000',
         'dojo_id' => 'required|exists:dojos,id',
       ]);
-
       Ninja::create($validated);
-
-      return redirect()->route('ninjas.index');
+      return redirect()->route('ninjas.index')->with('success', 'Ninja created!');
     }
 
-    public function destroy($id) {
+    public function destroy(Ninja $ninja) {
       // --> /ninjas/{id} (DELETE)
-      // handle delete request to delete a ninja record from table
+      $ninja->delete();
+
+      return redirect()->route('ninjas.index')->with('success', 'Ninja deleted!');
     }
     // edit() and update() for edit view and update requests
     // we won't be using these routes
